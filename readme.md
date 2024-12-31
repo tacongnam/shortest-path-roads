@@ -1,8 +1,14 @@
 ```python
 pip install -r requirements.txt
 
-python ./src/main.py <id road 1> <id road 2>
+python ./src/main.py --begin=<id road 1> --end=<id road 2> --node=<file node> --connection=<file connection> --save=<file save>
 ```
+
+- begin: id đoạn đường bắt đầu (thứ tự trong file node)
+- end: id đoạn đường kết thúc (thứ tự trong file node)
+- node (optional): tên file node, hệ thống sẽ load từ: data/{tên file node}. Mặc định nếu không thiết lập là data/node.csv
+- connection (optional): tên file connection, hệ thống sẽ load từ: data/{tên file connection}. Mặc định nếu không thiết lập là data/connection.csv
+- save (optional): tên file save, hệ thống sẽ save kết quả dưới dạng csv ở: savefile/{tên file save}. Mặc định nếu không thiết lập sẽ in kết quả ra màn hình
 
 ## Yêu cầu file input
 - File input cho thuật toán bao gồm data/node.csv và data/connection.csv

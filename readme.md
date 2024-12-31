@@ -1,37 +1,19 @@
-```python
-pip install -r requirements.txt
+## Giới thiệu
+- Thuật toán sử dụng Dijkstra tìm kiếm quãng đường đi ngắn nhất từ **đoạn đường A** đến **đoạn đường B**.
+- Mỗi đỉnh là một đoạn đường, mỗi cạnh thể hiện tính kết nối giữa hai đoạn đường.
+- Ví dụ quãng đường đi A -> B -> C -> D thì quy về (A, B) -> (B, C) -> (C, D).
+- Lưu ý, trọng số của đỉnh (chiều dài, tốc độ trung bình) **không thể thay đổi** trong quá trình chạy thuật toán (tức chỉ được cập nhật trước / sau khi chạy).
 
-python ./src/main.py --begin=<id road 1> --end=<id road 2> --node=<file node> --connection=<file connection> --save=<file save>
+## Hướng dẫn sử dụng
+- Chạy file ./src/main.py
+- File data/node.csv lưu thông tin node (đoạn đường) gồm vị trí bắt đầu, vị trí kết thúc, chiều dài quãng đường, tốc độ trung bình
+- File data/connection.csv lưu thông tin kết nối (đoạn đường nào nối với đoạn đường nào) gồm hai chỉ số đoạn đường liên kết theo node.csv
+- Mặc định vị trí lưu (savefile) là savefile/path.csv
+
+## Hướng dẫn trường hợp chỉ muốn lấy kết quả:
++ Bước 1: Xuất node.csv và connection.csv ở thư mục data
++ Bước 2: Chạy lệnh
+```java
+python ./src/main.py
 ```
-
-- begin: id đoạn đường bắt đầu (thứ tự trong file node)
-- end: id đoạn đường kết thúc (thứ tự trong file node)
-- node (optional): tên file node, hệ thống sẽ load từ: data/{tên file node}. Mặc định nếu không thiết lập là data/node.csv
-- connection (optional): tên file connection, hệ thống sẽ load từ: data/{tên file connection}. Mặc định nếu không thiết lập là data/connection.csv
-- save (optional): tên file save, hệ thống sẽ save kết quả dưới dạng csv ở: savefile/{tên file save}. Mặc định nếu không thiết lập sẽ in kết quả ra màn hình
-
-## Yêu cầu file input
-- File input cho thuật toán bao gồm data/node.csv và data/connection.csv
-
-- File data/node.csv chứa thông tin các đoạn đường, bao gồm:
-```csv
-begin,end,length,avg_speed
-Hill Main Court,River Oak Road,7.71,26.26
-Lakeside Central Road,Mountain South Lane,1.36,33.79
-...
-```
-
-- File data/connection.csv chứa thông tin các kết nối, bao gồm:
-```csv
-begin,end
-0,29
-0,47
-...
-```
-
-- Giá trị của begin và end tương ứng với chỉ số hai đoạn đường kết nối từ file node.csv.
-
-- Để fake data, chạy file
-```python
-python ./src/generate.py
-```
++ Bước 3: Lấy kết quả từ savefile/path.csv
